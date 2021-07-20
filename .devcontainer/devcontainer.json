@@ -31,8 +31,8 @@
 		"BR_PATH": "${containerEnv:PATH}:$ISTIO_HOME/bin:$HOME/.dotnet/tools"
 	},
 
-	"postStartCommand": "alias k2='kubectl' && alias kga='kubectl get all' && alias kgaa='kubectl get all --all-namespaces' && alias kaf='kubectl apply -f' && alias kdelf='kubectl delete -f' && alias kl='kubectl logs' && alias kccc='kubectl config current-context' && alias kcgc='kubectl config get-contexts' && alias kj='kubectl exec -it jumpbox -- bash -l' && alias kje='kubectl exec -it jumpbox -- ' && alias ipconfig='ip -4 a show eth0 | grep inet | sed \"s/inet//g\" | sed \"s/ //g\" | cut -d / -f 1' && export PIP=$(ipconfig | tail -n 1) && complete -F __start_kubectl k && echo 'post start' > ~/status",
-	"postAttachCommand": "alias k3='kubectl'",
+	"postStartCommand": "whoami > /home/akdc/postStart && env >> /home/akdc/postStart",
+	"postAttachCommand": "whoami > /home/akdc/postAttach && env >> /home/akdc/postAttach",
 
 	// Run Bash script in .devcontainer directory
 	"postCreateCommand": "/bin/bash ./.devcontainer/post-install.sh"
