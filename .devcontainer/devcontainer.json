@@ -31,8 +31,9 @@
 		"BR_PATH": "${containerEnv:PATH}:$ISTIO_HOME/bin:$HOME/.dotnet/tools"
 	},
 
-	"postStartCommand": "whoami > /home/akdc/postStart && env >> /home/akdc/postStart",
-	"postAttachCommand": "whoami > /home/akdc/postAttach && env >> /home/akdc/postAttach",
+	"onCreateCommand": "whoami > /home/vscode/onCreate && env >> /home/vscode/onCreate",
+	"postStartCommand": "whoami > /home/vscode/postStart && env >> /home/vscode/postStart",
+	"postAttachCommand": "whoami > /home/vscode/postAttach && env >> /home/vscode/postAttach",
 
 	// Run Bash script in .devcontainer directory
 	"postCreateCommand": "/bin/bash ./.devcontainer/post-install.sh"
